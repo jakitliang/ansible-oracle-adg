@@ -13,5 +13,11 @@
 - name: Oracle render tnsnames
   template: src=tnsnames.ora.j2 dest=/tmp/tnsnames.ora
 
+- name: Oracle master with Redhat copy script
+  copy:
+    src: prepare_database.sh
+    dest: /tmp
+    mode: 0755
+
 - name: Oracle Master Prepare Database
-  shell: "{{ role_path }}/files/prepare_database.sh"
+  shell: "/tmp/prepare_database.sh"

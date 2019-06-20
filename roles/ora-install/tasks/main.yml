@@ -4,26 +4,44 @@
 # Date: 2019/05/08
 #
 
-- name: Oracle dependences with Redhat copy install script
+- name: Oracle dependences with Redhat copy script 1
   copy:
-    src: "*.sh"
+    src: prepare_redhat_repo.sh
+    dest: /tmp
+    mode: 0755
+
+- name: Oracle dependences with Redhat copy script 2
+  copy:
+    src: change_host.sh
+    dest: /tmp
+    mode: 0755
+
+- name: Oracle dependences with Redhat copy script 3
+  copy:
+    src: install.sh
+    dest: /tmp
+    mode: 0755
+
+- name: Oracle dependences with Redhat copy script 4
+  copy:
+    src: database_initialize.sh
     dest: /tmp
     mode: 0755
 
 - name: Oracle dependences with Redhat install
-  shell: "/tmp/prepare_redhat_repo.sh"
+  shell: "/tmp/prepare_redhat_repo.sh"Ï
 
 - name: Oracle host config
-  shell: "/bin/bash {{ role_path }}/files/change_host.sh"
+  shell: "/tmp/change_host.sh"
 
 - name: Oracle copy config
   template: src=db_install.rsp.j2 dest=/tmp/db_install.rsp
 
 - name: Oracle installation
-  shell: "/bin/bash {{ role_path }}/files/install.sh"
+  shell: "/tmp/install.sh"
 
 - name: Oracle render dbca config
   template: src=dbca.rsp.j2 dest=/tmp/dbca.rsp
 
 - name: Oracle init database
-  shell: "/bin/bash {{ role_path }}/files/database_initialize.sh"
+  shell: "/tmp/database_initialize.sh"

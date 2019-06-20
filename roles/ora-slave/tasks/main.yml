@@ -16,8 +16,20 @@
 - name: Oracle copy orapwstd
   copy: src=orapwstd dest=/tmp/orapwstd
 
+- name: Oracle slave with Redhat copy script 1
+  copy:
+    src: prepare_slave_database.sh
+    dest: /tmp
+    mode: 0755
+
+- name: Oracle slave with Redhat copy script 2
+  copy:
+    src: recover_slave_from_master.sh
+    dest: /tmp
+    mode: 0755
+
 - name: Oracle slave node config
-  shell: "{{ role_path }}/files/prepare_slave_database.sh"
+  shell: "/tmp/prepare_slave_database.sh"
 
 - name: Oracle slave sync with master
-  shell: "{{ role_path }}/files/recover_slave_from_master.sh"
+  shell: "/tmp/recover_slave_from_master.sh"
