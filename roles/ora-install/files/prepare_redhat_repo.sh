@@ -5,13 +5,15 @@
 ## Date: 2019/05/08
 ##
 
-rhel_iso_url=http://localhost/rhel-server-6.5-x86_64-dvd.iso
+# Download and mount iso DVD
 
-wget $rhel_iso_url
+# rhel_iso_url=http://localhost/rhel-server-6.5-x86_64-dvd.iso
 
-mkdir /dvd
+# wget $rhel_iso_url
 
-mount -t iso9660 -o loop rhel-server-6.5-x86_64-dvd.iso /dvd
+# mkdir /dvd
+
+# mount -t iso9660 -o loop rhel-server-6.5-x86_64-dvd.iso /dvd
 
 tar cvf /etc/yum.repos.d.tar /etc/yum.repos.d
 
@@ -20,7 +22,7 @@ rm /etc/yum.repos.d/*
 cat > /etc/yum.repos.d/local.repo <<EOF
 [base]
 name=Red Hat Enterprise Linux \$releasever - \$basearch
-baseurl=file:///dvd
+baseurl=http://192.168.100.3/rhel-server-6.5-x86_64/
 enabled=1
 gpgcheck=0
 gpgkey=file:///dvd/RPM-GPG-KEY-redhat-release
