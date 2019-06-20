@@ -42,7 +42,7 @@ yum clean all
 
 yum check-update
 
-yum install -y gcc \
+yum install -yq gcc \
 compat-libstdc++-33 \
 elfutils-libelf-devel \
 glibc-devel \
