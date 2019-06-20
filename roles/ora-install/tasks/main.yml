@@ -42,6 +42,7 @@
 
 - name: Oracle installation
   shell: "/tmp/install.sh"
+  ignore_errors: True
 
 - name: Oracle render dbca config
   template: src=dbca.rsp.j2 dest=/tmp/dbca.rsp

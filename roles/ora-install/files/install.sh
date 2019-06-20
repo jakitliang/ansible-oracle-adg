@@ -105,5 +105,4 @@ su - oracle -c "/home/oracle/database/runInstaller -silent -responseFile /tmp/db
 # install client
 #su - oracle -c "/home/oracle/client/runInstaller -silent -responseFile /tmp/client_install.rsp"
 
-
-exit 1
+sleep 60
