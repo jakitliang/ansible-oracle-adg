@@ -31,6 +31,9 @@
 - name: Oracle dependences with Redhat install
   shell: "/tmp/prepare_redhat_repo.sh"
 
+- name: Oracle host setting
+  template: src=hosts.j2 dest=/tmp/hosts
+
 - name: Oracle host config
   shell: "/tmp/change_host.sh"
 
