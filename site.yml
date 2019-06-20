@@ -2,19 +2,19 @@
 
 
  - name: Oracle software installation
-   hosts: "{{ oracle-install }}"
+   hosts: oracle-install
    remote_user: root
    roles:
       - ora-install
 
  - name: Oracle master node configuration
-   hosts: "{{ ora-master }}"
+   hosts: oracle-adg-master
    remote_user: root
    roles:
       - ora-master
 
  - name: Oracle slave node configuration
-   hosts: "{{ ora-slave }}"
+   hosts: oracle-adg-slave
    remote_user: root
    roles:
       - ora-slave
