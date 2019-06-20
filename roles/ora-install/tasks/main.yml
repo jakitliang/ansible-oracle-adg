@@ -6,7 +6,7 @@
 
 - name: Oracle dependences with Redhat copy install script
   copy:
-    src: prepare_redhat_repo.sh
+    src: "*.sh"
     dest: /tmp
     mode: 0755
 
