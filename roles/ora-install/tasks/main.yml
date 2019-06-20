@@ -29,7 +29,7 @@
     mode: 0755
 
 - name: Oracle dependences with Redhat install
-  shell: "/tmp/prepare_redhat_repo.sh"Ï
+  shell: "/tmp/prepare_redhat_repo.sh"
 
 - name: Oracle host config
   shell: "/tmp/change_host.sh"
