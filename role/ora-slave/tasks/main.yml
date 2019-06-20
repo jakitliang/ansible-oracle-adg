@@ -1,0 +1,20 @@
+---
+
+
+- name: Oracle render initpri
+  template: src=initpri.ora.j2 dest=/tmp/initpri.ora
+
+- name: Oracle render listener
+  template: src=listener.ora.j2 dest=/tmp/listener.ora
+
+- name: Oracle render tnsnames
+  template: src=tnsnames.ora.j2 dest=/tmp/tnsnames.ora
+
+- name: Oracle copy orapwstd
+  copy: src=orapwstd dest=/tmp/orapwstd
+
+- name: Oracle slave node config
+  shell: "{{ role_path }}/files/prepare_slave_database.sh"
+
+- name: Oracle slave sync with master
+  shell: "{{ role_path }}/files/recover_slave_from_master.sh"

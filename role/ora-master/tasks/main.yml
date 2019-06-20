@@ -1,0 +1,14 @@
+---
+
+
+- name: Oracle render initpri
+  template: src=initpri.ora.j2 dest=/tmp/initpri.ora
+
+- name: Oracle render listener
+  template: src=listener.ora.j2 dest=/tmp/listener.ora
+
+- name: Oracle render tnsnames
+  template: src=tnsnames.ora.j2 dest=/tmp/tnsnames.ora
+
+- name: Oracle Master Prepare Database
+  shell: "{{ role_path }}/files/prepare_database.sh"
