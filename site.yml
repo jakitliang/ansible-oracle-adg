@@ -4,17 +4,20 @@
  - name: Oracle software installation
    hosts: oracle-install
    remote_user: root
+   become: yes
    roles:
       - ora-install
 
  - name: Oracle master node configuration
    hosts: oracle-adg-master
    remote_user: root
+   become: yes
    roles:
       - ora-master
 
  - name: Oracle slave node configuration
    hosts: oracle-adg-slave
    remote_user: root
+   become: yes
    roles:
       - ora-slave
