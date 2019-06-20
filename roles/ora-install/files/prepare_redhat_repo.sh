@@ -38,6 +38,10 @@ if [[ -e /etc/yum/pluginconf.d/subscription-manager.conf ]]; then
 	sed -i s/enabled=1/enabled=0/g /etc/yum/pluginconf.d/subscription-manager.conf
 fi
 
+yum clean all
+
+yum check-update
+
 yum install -y gcc \
 compat-libstdc++-33 \
 elfutils-libelf-devel \
