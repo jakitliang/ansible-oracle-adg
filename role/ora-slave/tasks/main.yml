@@ -1,5 +1,8 @@
 ---
-
+#
+# Author: Jakit
+# Date: 2019/05/08
+#
 
 - name: Oracle render initpri
   template: src=initpri.ora.j2 dest=/tmp/initpri.ora

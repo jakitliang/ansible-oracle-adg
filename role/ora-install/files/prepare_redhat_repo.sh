@@ -1,5 +1,10 @@
 #!/bin/bash
 
+##
+## Author: Jakit
+## Date: 2019/05/08
+##
+
 rhel_iso_url=http://localhost/rhel-server-6.5-x86_64-dvd.iso
 
 wget $rhel_iso_url

@@ -1,5 +1,8 @@
 ---
-
+#
+# Author: Jakit
+# Date: 2019/05/08
+#
 
 - name: Oracle dependences with Redhat install
   shell: "{{ role_path }}/files/prepare_redhat_repo.sh"

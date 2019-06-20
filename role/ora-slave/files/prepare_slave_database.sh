@@ -1,5 +1,10 @@
 #!/bin/bash
 
+##
+## Author: Jakit
+## Date: 2019/05/08
+##
+
 mkdir -p /u01/app/oracle/admin/std/adump
 mkdir -p /u01/app/oracle/diag/rdbms/std/std/trace
 mkdir -p /u01/app/oracle/arch
