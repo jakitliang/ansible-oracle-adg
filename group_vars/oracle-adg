@@ -2,3 +2,5 @@
 
 master_ip: 192.168.0.2
 slave_ip: 192.168.0.3
+master_host: master
+slave_host: slave
