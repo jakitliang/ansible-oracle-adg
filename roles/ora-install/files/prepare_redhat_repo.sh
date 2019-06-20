@@ -50,9 +50,9 @@ glibc-headers \
 gcc-c++ \
 libaio-devel \
 libstdc++-devel \
-pdksh \
 sysstat \
 compat-libcap1-* \
 ksh \
 smartmontools
 
+# yum install -y pdksh
