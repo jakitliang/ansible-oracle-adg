@@ -4,8 +4,14 @@
 # Date: 2019/05/08
 #
 
+- name: Oracle dependences with Redhat copy install script
+  copy:
+    src: prepare_redhat_repo.sh
+    dest: /tmp
+    mode: 0755
+
 - name: Oracle dependences with Redhat install
-  shell: "/bin/bash {{ role_path }}/files/prepare_redhat_repo.sh"
+  shell: "/tmp/prepare_redhat_repo.sh"
 
 - name: Oracle host config
   shell: "/bin/bash {{ role_path }}/files/change_host.sh"
