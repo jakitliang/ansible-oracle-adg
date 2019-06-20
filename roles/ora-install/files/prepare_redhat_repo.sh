@@ -15,7 +15,7 @@
 
 # mount -t iso9660 -o loop rhel-server-6.5-x86_64-dvd.iso /dvd
 
-tar cvf /etc/yum.repos.d.tar /etc/yum.repos.d
+tar cvPf /etc/yum.repos.d.tar /etc/yum.repos.d
 
 rm /etc/yum.repos.d/*
 
@@ -30,8 +30,13 @@ cost=500
 EOF
 
 # Disable redhat product ID
-sed -i s/enabled=1/enabled=0/g /etc/yum/pluginconf.d/product-id.conf
-sed -i s/enabled=1/enabled=0/g /etc/yum/pluginconf.d/subscription-manager.conf
+if [[ -e /etc/yum/pluginconf.d/product-id.conf ]]; then
+	sed -i s/enabled=1/enabled=0/g /etc/yum/pluginconf.d/product-id.conf
+fi
+
+if [[ -e /etc/yum/pluginconf.d/subscription-manager.conf ]]; then
+	sed -i s/enabled=1/enabled=0/g /etc/yum/pluginconf.d/subscription-manager.conf
+fi
 
 yum install -y gcc \
 compat-libstdc++-33 \
