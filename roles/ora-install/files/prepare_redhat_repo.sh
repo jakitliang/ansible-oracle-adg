@@ -15,17 +15,27 @@
 
 # mount -t iso9660 -o loop rhel-server-6.5-x86_64-dvd.iso /dvd
 
-tar cvPf /etc/yum.repos.d.tar /etc/yum.repos.d
+# tar cvPf /etc/yum.repos.d.tar /etc/yum.repos.d
 
-rm /etc/yum.repos.d/*
+# rm /etc/yum.repos.d/*
+
+# cat > /etc/yum.repos.d/local.repo <<EOF
+# [base]
+# name=Red Hat Enterprise Linux \$releasever - \$basearch
+# baseurl=file:///dvd
+# enabled=1
+# gpgcheck=0
+# gpgkey=file:///dvd/RPM-GPG-KEY-redhat-release
+# cost=500
+# EOF
 
 cat > /etc/yum.repos.d/local.repo <<EOF
 [base]
 name=Red Hat Enterprise Linux \$releasever - \$basearch
-baseurl=http://192.168.100.3/rhel-server-6.5-x86_64/
+baseurl=http://192.168.5.236/dvd
 enabled=1
 gpgcheck=0
-gpgkey=file:///dvd/RPM-GPG-KEY-redhat-release
+gpgkey=http://192.168.5.236/dvd/RPM-GPG-KEY-redhat-release
 cost=500
 EOF
 
