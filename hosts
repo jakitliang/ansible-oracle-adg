@@ -11,6 +11,8 @@
 [oracle-install]
 ora-install
 
-[oracle-adg]
+[oracle-adg-master]
 ora-master
+
+[oracle-adg-slave]
 ora-slave
