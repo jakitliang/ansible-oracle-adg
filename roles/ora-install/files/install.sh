@@ -5,7 +5,7 @@
 ## Date: 2019/05/08
 ##
 
-oracle_download_host="http://localhost/"
+oracle_download_host="http://192.168.5.236/"
 oracle_download_part_1="${oracle_download_host}p13390677_112040_Linux-x86-64_1of7.zip"
 oracle_download_part_2="${oracle_download_host}p13390677_112040_Linux-x86-64_2of7.zip"
 
