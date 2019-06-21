@@ -12,4 +12,4 @@ lsnrctl status
 dbca -silent -responseFile /tmp/dbca.rsp
 EOF
 
-exit 1
+exit

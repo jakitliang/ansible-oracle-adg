@@ -75,7 +75,7 @@ echo "login is set!"
 # rpm -ivh /oracle/soft/elfutils-libelf-devel-0.152-1.el6.x86_64.rpm
 
 
-useradd oracle
+useradd -m oracle
 
 groupadd oinstall
 groupadd dba
@@ -87,7 +87,10 @@ chown -R oracle:oinstall /oracle/
 chmod -R 775 $oracle_base_dir
 echo "installing directories is set OK!"
 
-su - oracle -c "cat /oracle/soft/oracle_env.txt >> .bash_profile"
+if [[ -e /tmp/env.txt ]]; then
+	su - oracle -c "cat /tmp/env.txt >> .bash_profile"
+fi
+
 su - oracle -c "source .bash_profile"
 echo "oracle's environmental variables are set OK!"
 
@@ -105,4 +108,6 @@ su - oracle -c "/home/oracle/database/runInstaller -silent -responseFile /tmp/db
 # install client
 #su - oracle -c "/home/oracle/client/runInstaller -silent -responseFile /tmp/client_install.rsp"
 
-sleep 60
+sleep 30
+
+exit

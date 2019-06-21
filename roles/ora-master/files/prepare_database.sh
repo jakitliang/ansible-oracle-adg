@@ -30,3 +30,5 @@ alter database add standby logfile group 6 '/u01/app/oracle/oradata/pri/std_redo
 alter database add standby logfile group 7 '/u01/app/oracle/oradata/pri/std_redo07.log' size 50m;
 exit;
 EOF
+
+exit

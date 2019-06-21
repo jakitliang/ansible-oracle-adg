@@ -17,6 +17,8 @@ cp /tmp/tnsnames.ora /u01/app/oracle/product/11.2.0/db_1/network/admin/
 cp /tmp/initstd.ora /u01/app/oracle/product/11.2.0/db_1/dbs
 cp /tmp/orapwstd /u01/app/oracle/product/11.2.0/db_1/dbs
 
+sleep 300
+
 su - oracle
 
 lsnrctl stop
@@ -34,3 +36,5 @@ startup nomount;
 duplicate target database for standby from active database nofilenamecheck;
 exit;
 EOF
+
+exit

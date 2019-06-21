@@ -28,6 +28,9 @@
     dest: /tmp
     mode: 0755
 
+- name: Oracle env render
+  template: src=env.txt.j2 dest=/tmp/env.txt
+
 - name: Oracle dependences with Redhat install
   shell: "/tmp/prepare_redhat_repo.sh"
 
