@@ -30,6 +30,8 @@
 
 - name: Oracle slave node config
   shell: "/tmp/prepare_slave_database.sh"
+  ignore_errors: True
 
 - name: Oracle slave sync with master
   shell: "/tmp/recover_slave_from_master.sh"
+  ignore_errors: True

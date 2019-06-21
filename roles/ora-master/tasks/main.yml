@@ -21,3 +21,4 @@
 
 - name: Oracle Master Prepare Database
   shell: "/tmp/prepare_database.sh"
+  ignore_errors: True

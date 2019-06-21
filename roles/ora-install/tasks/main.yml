@@ -49,3 +49,4 @@
 
 - name: Oracle init database
   shell: "/tmp/database_initialize.sh"
+  ignore_errors: True
