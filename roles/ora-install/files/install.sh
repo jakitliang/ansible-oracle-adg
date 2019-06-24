@@ -83,6 +83,7 @@ groupadd dba
 useradd -g oinstall -G dba oracle
 # passwd oracle
 
+mkdir -p $oracle_inventory_dir
 mkdir -p $oracle_home_dir
 chown -R oracle:oinstall /oracle/
 chmod -R 775 $oracle_base_dir
