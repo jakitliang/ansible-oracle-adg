@@ -86,28 +86,34 @@ chown -R oracle:oinstall /oracle/
 chmod -R 775 $oracle_base_dir
 echo "installing directories is set OK!"
 
-cat > /etc/oraInst.loc<<EOF
-inventory_loc=/oracle/app/oracle/oraInventory
-inst_group=oinstall
-EOF
+# cat > /etc/oraInst.loc<<EOF
+# inventory_loc=/oracle/app/oracle/oraInventory
+# inst_group=oinstall
+# EOF
 
 if [[ -e /tmp/env.txt ]]; then
 	su - oracle -c "cat /tmp/env.txt >> .bash_profile"
 fi
 
-su - oracle -c "source .bash_profile"
+su - oracle
+
+source .bash_profile
 echo "oracle's environmental variables are set OK!"
 
-su - oracle -c "unzip -q /oracle/soft/p13390677_112040_Linux-x86-64_1of7.zip"
-su - oracle -c "unzip -q /oracle/soft/p13390677_112040_Linux-x86-64_2of7.zip"
+unzip -q /oracle/soft/p13390677_112040_Linux-x86-64_1of7.zip
+unzip -q /oracle/soft/p13390677_112040_Linux-x86-64_2of7.zip
 #su - oracle -c "unzip -q /oracle/soft/p10404530_112030_Linux-x86-64_4of7.zip"
 echo "unzip is OK!"
 
 echo "begin installing oracle software......"
 echo "when the command is completed, excute the two shell scripts by root, then press enter to finish the installing!"
 
+if [[ -e /tmp/db_install.rsp ]]; then
+	cp /tmp/db_install.rsp /home/oracle
+fi
+
 # install db
-su - oracle -c "/home/oracle/database/runInstaller -silent -ignorePrereq -showProgress -responseFile /tmp/db_install.rsp"
+./runInstaller -silent -ignorePrereq -showProgress -responseFile /home/oracle/db_install.rsp
 
 # install client
 #su - oracle -c "/home/oracle/client/runInstaller -silent -responseFile /tmp/client_install.rsp"

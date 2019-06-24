@@ -4,7 +4,7 @@
 LISTENER =
   (DESCRIPTION_LIST =
     (DESCRIPTION =
-      (ADDRESS = (PROTOCOL = TCP)(HOST = {{ ansible_default_ipv4.address }})(PORT = 1521))
+      (ADDRESS = (PROTOCOL = TCP)(HOST = {{ slave_ip }})(PORT = 1521))
       (ADDRESS = (PROTOCOL = IPC)(KEY = EXTPROC1521))
     )
   )

@@ -5,11 +5,24 @@
 ## Date: 2019/05/08
 ##
 
-su - oracle <<EOF
+su - oracle
+
 netca -silent -responseFile /home/oracle/database/response/netca.rsp
+
+echo "Setting netca"
+
 lsnrctl start
+
 lsnrctl status
-dbca -silent -responseFile /tmp/dbca.rsp
-EOF
+
+echo "restart listener ok"
+
+if [[ /tmp/dbca.rsp ]]; then
+	cp /tmp/dbca.rsp /home/oracle
+fi
+
+dbca -silent -responseFile /home/oracle/dbca.rsp
+
+echo "database init finish"
 
 exit
