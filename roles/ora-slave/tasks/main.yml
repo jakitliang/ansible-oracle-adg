@@ -28,6 +28,20 @@
     dest: /tmp
     mode: 0755
 
+- name: Oracle slave with Redhat copy script 2
+  copy:
+    src: delay.sh
+    dest: /tmp
+    mode: 0755
+
+- name: Oracle slave wait master ready 1
+  shell: "/tmp/delay.sh"
+  ignore_errors: True
+
+- name: Oracle slave wait master ready 2
+  shell: "/tmp/delay.sh"
+  ignore_errors: True
+
 - name: Oracle slave node config
   shell: "/tmp/prepare_slave_database.sh"
   ignore_errors: True
