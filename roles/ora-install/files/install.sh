@@ -112,19 +112,19 @@ su - oracle -c "/home/oracle/database/runInstaller -silent -responseFile /tmp/db
 # install client
 #su - oracle -c "/home/oracle/client/runInstaller -silent -responseFile /tmp/client_install.rsp"
 
-timeout_test=$(cat /oracle/app/oracle/oraInventory/logs/installActions*.log | grep "Adding ExitStatus SUCCESS_WITH_WARNINGS to the exit status sets" | wc -l)
-timeout_limit=240
-timeout_count=0
+# timeout_test=$(cat /oracle/app/oracle/oraInventory/logs/installActions*.log | grep "Adding ExitStatus SUCCESS_WITH_WARNINGS to the exit status sets" | wc -l)
+# timeout_limit=240
+# timeout_count=0
 
-while [[ $timeout_count < $timeout_limit ]]; do
-	sleep 5
+# while [[ $timeout_count < $timeout_limit ]]; do
+# 	sleep 5
 
-	timeout_test=$(cat /oracle/app/oracle/oraInventory/logs/installActions*.log | grep "Adding ExitStatus SUCCESS_WITH_WARNINGS to the exit status sets" | wc -l)
-	timeout_count=$((timeout_count + 1))
+# 	timeout_test=$(cat /oracle/app/oracle/oraInventory/logs/installActions*.log | grep "Adding ExitStatus SUCCESS_WITH_WARNINGS to the exit status sets" | wc -l)
+# 	timeout_count=$((timeout_count + 1))
 
-	if [[ $timeout_test == 1 ]]; then
-		exit
-	fi
-done
+# 	if [[ $timeout_test == 1 ]]; then
+# 		exit
+# 	fi
+# done
 
 exit

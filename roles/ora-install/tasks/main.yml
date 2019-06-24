@@ -28,6 +28,12 @@
     dest: /tmp
     mode: 0755
 
+- name: Oracle dependences with Redhat copy script 5
+  copy:
+    src: delay.sh
+    dest: /tmp
+    mode: 0755
+
 - name: Oracle env render
   template: src=env.txt.j2 dest=/tmp/env.txt
 
@@ -52,4 +58,21 @@
 
 - name: Oracle init database
   shell: "/tmp/database_initialize.sh"
+  ignore_errors: True
+
+
+- name: Oracle installation wait finish 1
+  shell: "/tmp/delay.sh"
+  ignore_errors: True
+
+- name: Oracle installation wait finish 2
+  shell: "/tmp/delay.sh"
+  ignore_errors: True
+
+- name: Oracle installation wait finish 3
+  shell: "/tmp/delay.sh"
+  ignore_errors: True
+
+- name: Oracle installation wait finish 4
+  shell: "/tmp/delay.sh"
   ignore_errors: True
