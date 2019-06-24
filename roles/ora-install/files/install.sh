@@ -107,7 +107,7 @@ echo "begin installing oracle software......"
 echo "when the command is completed, excute the two shell scripts by root, then press enter to finish the installing!"
 
 # install db
-su - oracle -c "/home/oracle/database/runInstaller -silent -responseFile /tmp/db_install.rsp"
+su - oracle -c "/home/oracle/database/runInstaller -silent -ignorePrereq -showProgress -responseFile /tmp/db_install.rsp"
 
 # install client
 #su - oracle -c "/home/oracle/client/runInstaller -silent -responseFile /tmp/client_install.rsp"

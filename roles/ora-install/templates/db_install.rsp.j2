@@ -26,7 +26,8 @@ oracle.install.responseFileVersion=/oracle/install/rspfmt_dbinstall_response_sch
 #   - INSTALL_DB_AND_CONFIG
 #   - UPGRADE_DB
 #-------------------------------------------------------------------------------
-oracle.install.option=INSTALL_DB_SWONLY
+# oracle.install.option=INSTALL_DB_SWONLY
+oracle.install.option=INSTALL_DB_AND_CONFIG
 
 #-------------------------------------------------------------------------------
 # Specify the hostname of the system as set during the install. It can be used
@@ -449,7 +450,7 @@ COLLECTOR_SUPPORTHUB_URL=
 #   - OFFLINE_UPDATES
 #   - SKIP_UPDATES
 #------------------------------------------------------------------------------
-oracle.installer.autoupdates.option=
+oracle.installer.autoupdates.option=SKIP_UPDATES
 #------------------------------------------------------------------------------
 # In case MYORACLESUPPORT_DOWNLOAD option is chosen, specify the location where
 # the updates are to be downloaded.

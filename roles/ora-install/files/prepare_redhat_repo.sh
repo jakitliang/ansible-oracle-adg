@@ -52,20 +52,42 @@ yum clean all
 
 yum check-update
 
-yum install -y -q gcc \
+# yum install -y -q gcc \
+# compat-libstdc++-33 \
+# elfutils-libelf-devel \
+# glibc-devel \
+# glibc-headers \
+# gcc-c++ \
+# libaio-devel \
+# libstdc++-devel \
+# sysstat \
+# compat-libcap1-* \
+# make \
+# smartmontools
+
+yum install -y -q binutils \
 compat-libstdc++-33 \
+elfutils-libelf \
 elfutils-libelf-devel \
+expat \
+gcc \
+gcc-c++ \
+glibc \
+glibc-common \
 glibc-devel \
 glibc-headers \
-gcc-c++ \
+libaio \
 libaio-devel \
+libgcc \
+libstdc++ \
 libstdc++-devel \
+make \
 sysstat \
-compat-libcap1-* \
-ksh \
-smartmontools
+unixODBC \
+unixODBC-devel
 
 rpm -e ksh
 rpm -i /tmp/pdksh-5.2.14-30.x86_64.rpm
 
 # yum install -y pdksh
+# yum install -y ksh
