@@ -17,6 +17,7 @@ cp /tmp/tnsnames.ora /oracle/app/oracle/product/11.2.0/db_1/network/admin/
 cp /tmp/initstd.ora /oracle/app/oracle/product/11.2.0/db_1/dbs
 cp /tmp/orapwstd /oracle/app/oracle/product/11.2.0/db_1/dbs
 
+# Wait for master ready
 sleep 300
 
 su - oracle
