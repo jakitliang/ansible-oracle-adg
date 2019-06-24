@@ -56,11 +56,6 @@
 - name: Oracle render dbca config
   template: src=dbca.rsp.j2 dest=/tmp/dbca.rsp
 
-- name: Oracle init database
-  shell: "/tmp/database_initialize.sh"
-  ignore_errors: True
-
-
 - name: Oracle installation wait finish 1
   shell: "/tmp/delay.sh"
   ignore_errors: True
@@ -75,4 +70,8 @@
 
 - name: Oracle installation wait finish 4
   shell: "/tmp/delay.sh"
+  ignore_errors: True
+
+- name: Oracle init database
+  shell: "/tmp/database_initialize.sh"
   ignore_errors: True
