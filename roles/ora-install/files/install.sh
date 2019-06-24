@@ -11,6 +11,7 @@ oracle_download_part_2="${oracle_download_host}p13390677_112040_Linux-x86-64_2of
 
 oracle_down="/oracle/soft"
 oracle_base_dir="/oracle/app/oracle"
+oracle_inventory_dir="${oracle_base_dir}/oraInventory"
 oracle_home_dir="/oracle/app/oracle/product/11.2.0/db_1"
 
 if [[ ! -e $oracle_down ]]; then
