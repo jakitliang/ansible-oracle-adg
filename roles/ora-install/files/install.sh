@@ -116,13 +116,13 @@ timeout_test=$(cat /oracle/app/oracle/oraInventory/logs/installActions*.log | gr
 timeout_limit=240
 timeout_count=0
 
-while [[ $timeout_test == 0 ]]; do
+while [[ $timeout_count < $timeout_limit ]]; do
 	sleep 5
 
 	timeout_test=$(cat /oracle/app/oracle/oraInventory/logs/installActions*.log | grep "Adding ExitStatus SUCCESS_WITH_WARNINGS to the exit status sets" | wc -l)
 	timeout_count=$((timeout_count + 1))
 
-	if [[ $timeout_count > $timeout_limit ]]; then
+	if [[ $timeout_test == 1 ]]; then
 		exit
 	fi
 done
