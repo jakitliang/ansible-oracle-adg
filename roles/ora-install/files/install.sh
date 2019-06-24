@@ -75,12 +75,9 @@ echo "login is set!"
 # rpm -ivh /oracle/soft/pdksh-5.2.14-30.x86_64.rpm
 # rpm -ivh /oracle/soft/elfutils-libelf-devel-0.152-1.el6.x86_64.rpm
 
-
-useradd -m oracle
-
 groupadd oinstall
 groupadd dba
-useradd -g oinstall -G dba oracle
+useradd -g oinstall -G dba -m oracle
 # passwd oracle
 
 mkdir -p $oracle_inventory_dir
@@ -88,6 +85,11 @@ mkdir -p $oracle_home_dir
 chown -R oracle:oinstall /oracle/
 chmod -R 775 $oracle_base_dir
 echo "installing directories is set OK!"
+
+cat > /etc/oraInst.loc<<EOF
+inventory_loc=/oracle/app/oracle/oraInventory
+inst_group=oinstall
+EOF
 
 if [[ -e /tmp/env.txt ]]; then
 	su - oracle -c "cat /tmp/env.txt >> .bash_profile"
