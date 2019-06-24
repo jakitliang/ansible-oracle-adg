@@ -65,4 +65,7 @@ compat-libcap1-* \
 ksh \
 smartmontools
 
+rpm -e ksh
+rpm -i /tmp/pdksh-5.2.14-30.x86_64.rpm
+
 # yum install -y pdksh

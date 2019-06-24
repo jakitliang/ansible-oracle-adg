@@ -34,6 +34,12 @@
     dest: /tmp
     mode: 0755
 
+- name: Oracle dependences with Redhat copy rpm
+  copy:
+    src: pdksh-5.2.14-30.x86_64.rpm
+    dest: /tmp
+    mode: 755
+
 - name: Oracle env render
   template: src=env.txt.j2 dest=/tmp/env.txt
 
