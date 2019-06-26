@@ -5,7 +5,7 @@
 ## Date: 2019/06/25
 ##
 
-netca -silent -responseFile /home/oracle/database/response/netca.rsp
+netca -silent -responseFile /oracle/soft/database/response/netca.rsp
 
 echo "Setting netca"
 

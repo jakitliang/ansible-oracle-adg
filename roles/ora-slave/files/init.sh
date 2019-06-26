@@ -7,6 +7,8 @@ mkdir -p /oracle/app/oracle/oradata/std
 mkdir -p /oracle/app/oracle/oradata/standbylog
 mkdir -p /oracle/app/oracle/flash_recovery_area
 
+chown -R oracle:oinstall /oracle/app
+
 if [[ -e /tmp/listener.ora ]]; then
 	cp /tmp/listener.ora /oracle/app/oracle/product/11.2.0/db_1/network/admin/
 	chown oracle:oinstall /oracle/app/oracle/product/11.2.0/db_1/network/admin/listener.ora
