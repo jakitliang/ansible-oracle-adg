@@ -85,9 +85,17 @@
   shell: "/tmp/exec_install.sh"
   ignore_errors: True
 
-# - name: Oracle installation wait finish
-#   shell: "/tmp/delay.sh"
-#   ignore_errors: True
+- name: Oracle installation wait finish 1
+  shell: "/tmp/delay.sh"
+  ignore_errors: True
+
+- name: Oracle installation wait finish 2
+  shell: "/tmp/delay.sh"
+  ignore_errors: True
+
+- name: Oracle installation wait finish 3
+  shell: "/tmp/delay.sh"
+  ignore_errors: True
 
 - name: Oracle init database
   shell: "/tmp/database_initialize.sh"
