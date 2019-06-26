@@ -4,6 +4,39 @@
 # Date: 2019/05/08
 #
 
+# Copying scripts
+
+- name: Oracle slave with Redhat copy script 1
+  copy:
+    src: init.sh
+    dest: /tmp
+    mode: 0755
+
+- name: Oracle slave with Redhat copy script 2
+  copy:
+    src: sync_database.sh
+    dest: /tmp
+    mode: 0755
+
+- name: Oracle slave with Redhat copy script 3
+  copy:
+    src: exec_sync_database.sh
+    dest: /tmp
+    mode: 0755
+
+- name: Oracle slave with Redhat copy script 4
+  copy:
+    src: delay.sh
+    dest: /tmp
+    mode: 0755
+
+# Copying files
+
+- name: Oracle copy orapwstd
+  copy: src=orapwstd dest=/tmp/orapwstd
+
+# Rendering
+
 - name: Oracle render initpri
   template: src=initpri.ora.j2 dest=/tmp/initpri.ora
 
@@ -13,27 +46,6 @@
 - name: Oracle render tnsnames
   template: src=tnsnames.ora.j2 dest=/tmp/tnsnames.ora
 
-- name: Oracle copy orapwstd
-  copy: src=orapwstd dest=/tmp/orapwstd
-
-- name: Oracle slave with Redhat copy script 1
-  copy:
-    src: prepare_slave_database.sh
-    dest: /tmp
-    mode: 0755
-
-- name: Oracle slave with Redhat copy script 2
-  copy:
-    src: recover_slave_from_master.sh
-    dest: /tmp
-    mode: 0755
-
-- name: Oracle slave with Redhat copy script 2
-  copy:
-    src: delay.sh
-    dest: /tmp
-    mode: 0755
-
 # - name: Oracle slave wait master ready 1
 #   shell: "/tmp/delay.sh"
 #   ignore_errors: True
@@ -42,10 +54,12 @@
 #   shell: "/tmp/delay.sh"
 #   ignore_errors: True
 
-- name: Oracle slave node config
-  shell: "/tmp/prepare_slave_database.sh"
+# Execution
+
+- name: Oracle slave node init
+  shell: "/tmp/init.sh"
   ignore_errors: True
 
 - name: Oracle slave sync with master
-  shell: "/tmp/recover_slave_from_master.sh"
+  shell: "/tmp/exec_sync_database.sh"
   ignore_errors: True

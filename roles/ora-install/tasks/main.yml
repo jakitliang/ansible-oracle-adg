@@ -4,6 +4,8 @@
 # Date: 2019/05/08
 #
 
+# Copying scripts
+
 - name: Oracle dependences with Redhat copy script 1
   copy:
     src: prepare_redhat_repo.sh
@@ -18,63 +20,72 @@
 
 - name: Oracle dependences with Redhat copy script 3
   copy:
-    src: install.sh
+    src: init.sh
     dest: /tmp
     mode: 0755
 
 - name: Oracle dependences with Redhat copy script 4
   copy:
-    src: database_initialize.sh
+    src: exec_install.sh
     dest: /tmp
     mode: 0755
 
 - name: Oracle dependences with Redhat copy script 5
   copy:
+    src: install.sh
+    dest: /tmp
+    mode: 0755
+
+- name: Oracle dependences with Redhat copy script 6
+  copy:
+    src: database_initialize.sh
+    dest: /tmp
+    mode: 0755
+
+- name: Oracle dependences with Redhat copy script 7
+  copy:
     src: delay.sh
     dest: /tmp
     mode: 0755
+
+# Dependences
 
 - name: Oracle dependences with Redhat copy rpm
   copy:
     src: pdksh-5.2.14-30.x86_64.rpm
     dest: /tmp
-    mode: 755
+    mode: 0755
+
+# Rendering
 
 - name: Oracle env render
   template: src=env.txt.j2 dest=/tmp/env.txt
 
-- name: Oracle dependences with Redhat install
-  shell: "/tmp/prepare_redhat_repo.sh"
-
 - name: Oracle host setting
   template: src=hosts.j2 dest=/tmp/hosts
 
-- name: Oracle host config
-  shell: "/tmp/change_host.sh"
-
-- name: Oracle copy config
+- name: Oracle render config
   template: src=db_install.rsp.j2 dest=/tmp/db_install.rsp
 
+# Execution
+
+- name: Oracle dependences with Redhat install
+  shell: "/tmp/prepare_redhat_repo.sh"
+  ignore_errors: True
+
+- name: Oracle host config
+  shell: "/tmp/change_host.sh"
+  ignore_errors: True
+
+- name: Oracle initialize environment
+  shell: "/tmp/init.sh"
+  ignore_errors: True
+
 - name: Oracle installation
-  shell: "/tmp/install.sh"
+  shell: "/tmp/exec_install.sh"
   ignore_errors: True
 
-- name: Oracle render dbca config
-  template: src=dbca.rsp.j2 dest=/tmp/dbca.rsp
-
-- name: Oracle installation wait finish 1
-  shell: "/tmp/delay.sh"
-  ignore_errors: True
-
-- name: Oracle installation wait finish 2
-  shell: "/tmp/delay.sh"
-  ignore_errors: True
-
-- name: Oracle installation wait finish 3
-  shell: "/tmp/delay.sh"
-  ignore_errors: True
-
-# - name: Oracle installation wait finish 4
+# - name: Oracle installation wait finish
 #   shell: "/tmp/delay.sh"
 #   ignore_errors: True
 

@@ -4,6 +4,40 @@
 # Date: 2019/05/08
 #
 
+# Copying scripts
+
+- name: Oracle master with Redhat copy script 1
+  copy:
+    src: init.sh
+    dest: /tmp
+    mode: 0755
+
+- name: Oracle master with Redhat copy script 2
+  copy:
+    src: create_database.sh
+    dest: /tmp
+    mode: 0755
+
+- name: Oracle master with Redhat copy script 3
+  copy:
+    src: prepare_log.sh
+    dest: /tmp
+    mode: 0755
+
+- name: Oracle master with Redhat copy script 4
+  copy:
+    src: exec_create_database.sh
+    dest: /tmp
+    mode: 0755
+
+- name: Oracle master with Redhat copy script 5
+  copy:
+    src: exec_prepare_log.sh
+    dest: /tmp
+    mode: 0755
+
+# Rendering
+
 - name: Oracle render initpri
   template: src=initpri.ora.j2 dest=/tmp/initpri.ora
 
@@ -13,12 +47,19 @@
 - name: Oracle render tnsnames
   template: src=tnsnames.ora.j2 dest=/tmp/tnsnames.ora
 
-- name: Oracle master with Redhat copy script
-  copy:
-    src: prepare_database.sh
-    dest: /tmp
-    mode: 0755
+- name: Oracle render dbca config
+  template: src=dbca.rsp.j2 dest=/tmp/dbca.rsp
 
-- name: Oracle Master Prepare Database
-  shell: "/tmp/prepare_database.sh"
+# Execution
+
+- name: Oracle Master Init
+  shell: "/tmp/init.sh"
+  ignore_errors: True
+
+- name: Oracle Master Create Database
+  shell: "/tmp/exec_create_database.sh"
+  ignore_errors: True
+
+- name: Oracle Master Prepare Log
+  shell: "/tmp/exec_prepare_log.sh"
   ignore_errors: True
