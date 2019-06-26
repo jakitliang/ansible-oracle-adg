@@ -37,8 +37,8 @@
 
 # Rendering
 
-- name: Oracle render initpri
-  template: src=initpri.ora.j2 dest=/tmp/initpri.ora
+- name: Oracle render initstd
+  template: src=initstd.ora.j2 dest=/tmp/initstd.ora
 
 - name: Oracle render listener
   template: src=listener.ora.j2 dest=/tmp/listener.ora
