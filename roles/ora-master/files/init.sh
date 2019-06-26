@@ -12,5 +12,5 @@ fi
 
 if [[ -e /tmp/initpri.ora ]]; then
 	cp /tmp/initpri.ora /oracle/app/oracle/product/11.2.0/db_1/dbs
-	chown oracle:oinstall /oracle/app/oracle/product/11.2.0/db_1/network/admin/initpri.ora
+	chown oracle:oinstall /oracle/app/oracle/product/11.2.0/db_1/dbs/initpri.ora
 fi
