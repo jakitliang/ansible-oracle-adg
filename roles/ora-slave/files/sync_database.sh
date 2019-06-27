@@ -16,18 +16,24 @@ startup nomount;
 exit;
 EOF
 
-sleep 20
+sleep 30
 
 rman target sys/system@pri auxiliary sys/system@std <<EOF
 duplicate target database for standby from active database nofilenamecheck;
 exit;
 EOF
 
-sleep 60
+sleep 120
 
 sqlplus -s "/ as sysdba" <<EOF
 shutdown immediate;
 startup;
+exit;
+EOF
+
+sleep 20
+
+sqlplus -s "/ as sysdba" <<EOF
 alter database recover managed standby database disconnect from session;
 exit;
 EOF
