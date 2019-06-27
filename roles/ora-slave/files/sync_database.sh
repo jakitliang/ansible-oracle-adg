@@ -26,7 +26,8 @@ EOF
 sleep 60
 
 sqlplus -s "/ as sysdba" <<EOF
-alter database open;
+shutdown immediate;
+startup;
 alter database recover managed standby database disconnect from session;
 exit;
 EOF
