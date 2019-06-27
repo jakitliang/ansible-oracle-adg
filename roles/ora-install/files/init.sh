@@ -5,9 +5,15 @@
 ## Date: 2019/06/25
 ##
 
-oracle_download_host="http://192.168.5.236/"
-oracle_download_part_1="${oracle_download_host}p13390677_112040_Linux-x86-64_1of7.zip"
-oracle_download_part_2="${oracle_download_host}p13390677_112040_Linux-x86-64_2of7.zip"
+oracle_download_host="localhost"
+
+if [[ -e /tmp/repo ]]; then
+	oracle_download_host=$(cat /tmp/repo)
+fi
+
+oracle_download_base="http://${oracle_download_host}/"
+oracle_download_part_1="${oracle_download_base}p13390677_112040_Linux-x86-64_1of7.zip"
+oracle_download_part_2="${oracle_download_base}p13390677_112040_Linux-x86-64_2of7.zip"
 
 oracle_down="/oracle/soft"
 oracle_base_dir="/oracle/app/oracle"

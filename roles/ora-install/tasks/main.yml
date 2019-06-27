@@ -67,6 +67,9 @@
 - name: Oracle render config
   template: src=db_install.rsp.j2 dest=/tmp/db_install.rsp
 
+- name: Repository config render
+  template: src=repo.j2 dest=/tmp/repo
+
 # Execution
 
 - name: Oracle dependences with Redhat install

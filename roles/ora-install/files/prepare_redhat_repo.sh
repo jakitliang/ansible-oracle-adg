@@ -29,13 +29,19 @@
 # cost=500
 # EOF
 
+oracle_download_host="localhost"
+
+if [[ -e /tmp/repo ]]; then
+	oracle_download_host=$(cat /tmp/repo)
+fi
+
 cat > /etc/yum.repos.d/local.repo <<EOF
 [base]
 name=Red Hat Enterprise Linux \$releasever - \$basearch
-baseurl=http://192.168.5.236/dvd
+baseurl=http://${oracle_download_host}/dvd
 enabled=1
 gpgcheck=0
-gpgkey=http://192.168.5.236/dvd/RPM-GPG-KEY-redhat-release
+gpgkey=http://${oracle_download_host}/dvd/RPM-GPG-KEY-redhat-release
 cost=500
 EOF
 
